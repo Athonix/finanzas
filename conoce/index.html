@@ -67,7 +67,7 @@ h2{font-size:clamp(30px,4vw,44px);letter-spacing:-.03em;line-height:1.08;font-we
 .f p{color:var(--t2);font-size:15px}
 
 /* Versión iPhone */
-.native{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.native{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:40px}
 .n{background:var(--card);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:10px}
 .n .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center}
 .n .ic svg{width:24px;height:24px}
@@ -143,7 +143,7 @@ footer a{color:var(--t2)}
       <div class="facts">
         <span data-t="fact1">Tus datos se quedan en tu celular</span>
         <span data-t="fact2">Funciona sin internet</span>
-        <span data-t="fact3">Siri y Apple Pay en la versión de iPhone</span>
+        <span data-t="fact3">Apple Pay, Siri y Centro de control en iPhone</span>
       </div>
     </div>
     <div>
@@ -190,6 +190,11 @@ footer a{color:var(--t2)}
         <b data-t="n3b">Widgets en tu pantalla de inicio</b>
         <p data-t="n3p">Tu saldo y tus presupuestos a la vista junto a tus otras apps, sin tener que abrir nada.</p>
       </div>
+      <div class="n">
+        <span class="ic" style="background:var(--green)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></svg></span>
+        <b data-t="n4b">Gasto rápido desde el Centro de control</b>
+        <p data-t="n4p">Desliza hacia abajo desde la esquina, toca el botón de Finanzas y se abre directo el formulario: pones el monto, el concepto y a qué apartado va. Listo en segundos.</p>
+      </div>
     </div>
     <p class="fine" data-t="natFine">Por ahora la app está en español y usa pesos mexicanos. Sin la licencia de Apple, esta versión solo puede instalarse por 7 días; por eso la cooperación.</p>
   </div>
@@ -211,7 +216,7 @@ footer a{color:var(--t2)}
   <div class="wrap coop">
     <div class="story">
       <h2 data-t="coopH">Ayúdame a llevarla a la App Store.</h2>
-      <p data-t="coopP1">Para que cualquiera pueda descargar la versión de iPhone, con <strong>Apple Pay, Siri y widgets</strong>, Apple cobra una licencia de desarrollador de <strong>99 dólares al año</strong>. Sin ella, la app deja de abrir cada 7 días.</p>
+      <p data-t="coopP1">Para que cualquiera pueda descargar la versión de iPhone, con <strong>Apple Pay, Siri, widgets y el botón del Centro de control</strong>, Apple cobra una licencia de desarrollador de <strong>99 dólares al año</strong>. Sin ella, la app deja de abrir cada 7 días.</p>
       <p data-t="coopP2">Si la app te sirve o te gusta la idea, cualquier cooperación ayuda, vengas de México o de cualquier otro país. Si se junta la meta, la publico en la App Store para que cualquiera la descargue gratis.</p>
       <p data-t="coopP3">La versión web va a seguir siendo gratis, con o sin cooperación.</p>
     </div>
@@ -255,7 +260,7 @@ const EN = {
   h1: 'Know where your money goes. <em>Without the hassle.</em>',
   lead: 'Finanzas is a simple app to log your spending and income, set budgets and see on a chart how your month is going. I built it for myself and my family, and now I’m sharing it with anyone who wants it, wherever they are.',
   use: 'Use it now', support: 'Support the project',
-  fact1: 'Your data stays on your phone', fact2: 'Works offline', fact3: 'Siri and Apple Pay on the iPhone version',
+  fact1: 'Your data stays on your phone', fact2: 'Works offline', fact3: 'Apple Pay, Siri and Control Center on iPhone',
   phoneNote: 'This is the real app with sample data. Go ahead and tap it.',
   featH: 'The essentials, no filler.', featSub: 'Log an expense in two taps and let the app do the math.',
   f1b: 'Budgets by category', f1p: 'Food, transport, subscriptions, fun and savings. A ring shows how much of each you’ve used.',
@@ -270,13 +275,14 @@ const EN = {
   n1b: 'Automatic logging with Apple Pay', n1p: 'Every time you pay with your iPhone, the expense is saved with the amount and the store, and the category is guessed for you. You set it up once with an automation in the Shortcuts app.',
   n2b: 'Works with Siri', n2p: 'Log an expense or ask how much you’ve spent without opening the app, just with your voice.',
   n2q: '“Hey Siri, registrar gasto en Finanzas”',
+  n4b: 'Quick expense from Control Center', n4p: 'Swipe down from the corner, tap the Finanzas button and the form opens right away: enter the amount, what it was for and which category it goes in. Done in seconds.',
   n3b: 'Home Screen widgets', n3p: 'Your balance and budgets right next to your other apps, without opening anything.',
   natFine: 'For now the app is in Spanish and uses Mexican pesos, and Siri commands are in Spanish. Without Apple’s license this version can only be installed for 7 days — that’s what the fundraiser is for.',
   instH: 'Install it on your phone in a minute.', instSub: 'The web version doesn’t need the App Store. On Android, open it in Chrome and tap “Install app”.',
   s1b: 'Open the link in Safari', s2b: 'Tap Share', s2p: 'The square with the up arrow at the bottom of the screen.',
   s3b: '“Add to Home Screen”', s3p: 'You get an icon like any other app, and it opens full screen.',
   coopH: 'Help me bring it to the App Store.',
-  coopP1: 'To let anyone download the iPhone version, with <strong>Apple Pay, Siri and widgets</strong>, Apple charges a developer license of <strong>99 US dollars a year</strong>. Without it, the app stops opening every 7 days.',
+  coopP1: 'To let anyone download the iPhone version, with <strong>Apple Pay, Siri, widgets and the Control Center button</strong>, Apple charges a developer license of <strong>99 US dollars a year</strong>. Without it, the app stops opening every 7 days.',
   coopP2: 'If the app is useful to you or you like the idea, every bit helps — from Mexico or anywhere in the world. If we reach the goal, I’ll publish it on the App Store for anyone to download for free.',
   coopP3: 'The web version will stay free, with or without support.',
   goalLbl: 'Goal: Apple license, 1 year',
