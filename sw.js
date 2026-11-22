@@ -1,6 +1,6 @@
 // Service worker: permite abrir la app sin conexión.
 // Sube el número de versión cada vez que publiques cambios.
-const CACHE = 'finanzas-v4';
+const CACHE = 'finanzas-v5';
 const ASSETS = [
   './',
   './index.html',
