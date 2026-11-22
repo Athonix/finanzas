@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Finanzas — una app para tu dinero</title>
+<meta name="description" content="Una app gratis para llevar tus gastos, ingresos y presupuestos. Sin anuncios, sin cuentas, y tus datos se quedan en tu celular.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="Finanzas — una app para tu dinero">
+<meta property="og:description" content="Gratis, sin anuncios y tus datos se quedan en tu celular. Ayúdame a llevarla a la App Store.">
+<meta property="og:image" content="https://athonix.github.io/finanzas/icons/icon-512.png">
+<link rel="icon" type="image/png" href="../icons/icon-192.png">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#000;--card:#1C1C1E;--card2:#2C2C2E;
+  --t1:#fff;--t2:rgba(235,235,245,.62);--t3:rgba(235,235,245,.32);
+  --line:rgba(255,255,255,.09);
+  --green:#30D158;--blue:#0A84FF;--orange:#FF9F0A;--red:#FF453A;--purple:#BF5AF2;
+}
+html{background:var(--bg);color:var(--t1);-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.45;background:var(--bg)}
+a{color:inherit}
+.num{font-variant-numeric:tabular-nums}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+/* --- Portada --- */
+.top{display:flex;align-items:center;gap:10px;padding:22px 0 0;font-weight:700;font-size:17px}
+.top img{width:30px;height:30px;border-radius:8px}
+.top a.open{margin-left:auto;font-size:15px;font-weight:600;color:var(--blue);text-decoration:none}
+
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:56px 0 80px}
+.kicker{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-bottom:16px}
+h1{font-size:clamp(40px,6.2vw,68px);line-height:1.02;letter-spacing:-.035em;font-weight:800}
+h1 em{font-style:normal;color:var(--t3)}
+.lead{font-size:19px;color:var(--t2);margin:22px 0 30px;max-width:30em}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:52px;padding:0 24px;border-radius:26px;font-size:17px;font-weight:700;text-decoration:none;border:0;cursor:pointer;font-family:inherit}
+.btn.blue{background:var(--blue);color:#fff}
+.btn.ghost{background:var(--card2);color:var(--t1)}
+.btn:active{transform:scale(.97)}
+.facts{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:30px;font-size:14px;color:var(--t2)}
+.facts span::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:8px;vertical-align:1px}
+
+/* Celular con la app real adentro */
+.phone{justify-self:center;position:relative;width:340px;height:700px;border-radius:52px;background:#000;
+  box-shadow:0 0 0 9px #18181b,0 0 0 10.5px #3a3a40,0 40px 90px rgba(10,132,255,.13),0 30px 80px rgba(0,0,0,.8);overflow:hidden}
+.phone iframe{position:absolute;top:0;left:0;width:375px;height:772px;border:0;transform:scale(.9067);transform-origin:0 0}
+.phone-note{text-align:center;font-size:13px;color:var(--t3);margin-top:22px}
+
+/* --- Secciones --- */
+section{padding:72px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(30px,4vw,44px);letter-spacing:-.03em;line-height:1.08;font-weight:800;max-width:16em}
+.sub{color:var(--t2);font-size:18px;margin-top:14px;max-width:34em}
+
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-radius:22px;overflow:hidden;margin-top:40px}
+.f{background:var(--card);padding:26px 24px 28px}
+.f i{display:block;width:10px;height:10px;border-radius:3px;margin-bottom:18px}
+.f b{display:block;font-size:18px;letter-spacing:-.01em;margin-bottom:6px}
+.f p{color:var(--t2);font-size:15px}
+
+.steps{list-style:none;counter-reset:s;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.steps li{counter-increment:s;background:var(--card);border-radius:20px;padding:22px}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--card2);font-weight:800;margin-bottom:14px}
+.steps b{display:block;font-size:17px;margin-bottom:4px}
+.steps p{color:var(--t2);font-size:15px}
+
+/* --- Cooperación --- */
+.coop{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.coop .story p{color:var(--t2);font-size:17px;margin-top:16px}
+.coop .story p strong{color:var(--t1)}
+.goal{background:var(--card);border-radius:26px;padding:28px}
+.goal .lbl{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--t2)}
+.goal .amt{font-size:46px;font-weight:800;letter-spacing:-.03em;margin-top:6px}
+.goal .amt small{font-size:20px;color:var(--t3);font-weight:700}
+.bar{height:12px;border-radius:6px;background:var(--card2);overflow:hidden;margin:18px 0 10px}
+.bar i{display:block;height:100%;width:0;background:var(--green);border-radius:6px;transition:width 1.2s cubic-bezier(.32,.72,0,1)}
+.goal .meta{display:flex;justify-content:space-between;font-size:14px;color:var(--t2)}
+.uses{list-style:none;margin:24px 0;border-top:1px solid var(--line)}
+.uses li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+.uses li span:last-child{color:var(--t2);white-space:nowrap}
+.pay{display:grid;gap:10px}
+.pay .btn{width:100%}
+.pay .soon{font-size:14px;color:var(--t3);text-align:center;padding:12px;border:1px dashed var(--line);border-radius:16px}
+.thanks{font-size:13px;color:var(--t3);margin-top:14px;text-align:center}
+
+footer{border-top:1px solid var(--line);padding:32px 0 calc(40px + env(safe-area-inset-bottom));color:var(--t3);font-size:14px}
+footer a{color:var(--t2)}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;gap:44px;padding:40px 0 64px}
+  .features,.steps{grid-template-columns:1fr}
+  .coop{grid-template-columns:1fr}
+}
+@media (max-width:400px){
+  .phone{width:300px;height:618px;border-radius:46px}
+  .phone iframe{transform:scale(.8)}
+}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <img src="../icons/icon-192.png" alt="">Finanzas
+    <a class="open" href="../">Abrir la app →</a>
+  </header>
+
+  <div class="hero">
+    <div>
+      <div class="kicker">Gratis · Sin anuncios · Sin cuentas</div>
+      <h1>Sabe a dónde se va tu dinero. <em>Sin complicarte.</em></h1>
+      <p class="lead">Finanzas es una app sencilla para anotar tus gastos e ingresos, ponerte presupuestos y ver en una gráfica cómo vas en el mes. La hice para mí y mi familia, y ahora la comparto.</p>
+      <div class="cta">
+        <a class="btn blue" href="../">Usarla ahora</a>
+        <a class="btn ghost" href="#cooperacion">Apoyar el proyecto</a>
+      </div>
+      <div class="facts">
+        <span>Tus datos se quedan en tu celular</span>
+        <span>Funciona sin internet</span>
+        <span>Pesos mexicanos</span>
+      </div>
+    </div>
+    <div>
+      <div class="phone"><iframe src="../?demo=1" title="Vista de muestra de la app Finanzas" loading="lazy"></iframe></div>
+      <p class="phone-note">Es la app real con datos de ejemplo. Puedes tocarla.</p>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>Lo necesario, nada de relleno.</h2>
+    <p class="sub">Registras un gasto en dos toques y la app hace las cuentas por ti.</p>
+    <div class="features">
+      <div class="f"><i style="background:var(--blue)"></i><b>Presupuestos por categoría</b><p>Comida, transporte, suscripciones, ocio y ahorro. Ves en un anillo cuánto llevas de cada uno.</p></div>
+      <div class="f"><i style="background:var(--green)"></i><b>Tu mes contra el anterior</b><p>Una gráfica de gasto acumulado te dice si este mes vas mejor o peor que el pasado.</p></div>
+      <div class="f"><i style="background:var(--orange)"></i><b>Widgets</b><p>Un tablero con tu saldo, tus últimos movimientos y tus presupuestos, acomodado a tu gusto.</p></div>
+      <div class="f"><i style="background:var(--purple)"></i><b>Privada de verdad</b><p>No hay registro ni servidor: lo que anotas vive solo en tu teléfono. Nadie más lo ve.</p></div>
+      <div class="f"><i style="background:var(--red)"></i><b>Sin internet</b><p>Una vez instalada, abre y guarda aunque no tengas datos ni Wi‑Fi.</p></div>
+      <div class="f"><i style="background:#64D2FF"></i><b>Respaldo</b><p>Guarda un archivo con tus movimientos para pasarlos a otro celular cuando lo cambies.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Instálala en tu iPhone en un minuto.</h2>
+    <p class="sub">No hace falta la App Store. También funciona en Android desde Chrome.</p>
+    <ol class="steps">
+      <li><b>Abre el enlace en Safari</b><p>athonix.github.io/finanzas</p></li>
+      <li><b>Toca Compartir</b><p>El cuadrito con la flecha hacia arriba, abajo de la pantalla.</p></li>
+      <li><b>“Agregar a pantalla de inicio”</b><p>Te queda el ícono como cualquier app y se abre a pantalla completa.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="cooperacion">
+  <div class="wrap coop">
+    <div class="story">
+      <h2>Ayúdame a llevarla a la App Store.</h2>
+      <p>Ya existe una versión nativa para iPhone, con <strong>widgets en la pantalla de inicio</strong> que muestran tu saldo sin abrir la app. El problema: para instalarla en otros celulares, Apple cobra una licencia de desarrollador de <strong>99 dólares al año (unos 2,000 pesos)</strong>. Sin ella, la app deja de abrir cada 7 días.</p>
+      <p>Si la app te sirve o te gusta la idea, cualquier cooperación ayuda. Si se junta la meta, la publico en la App Store para que cualquiera la descargue gratis.</p>
+      <p>La versión web va a seguir siendo gratis, con o sin cooperación.</p>
+    </div>
+    <div class="goal">
+      <div class="lbl">Meta: licencia de Apple, 1 año</div>
+      <div class="amt num"><span id="raised">$0</span> <small id="goalTxt">de $2,000 MXN</small></div>
+      <div class="bar"><i id="bar"></i></div>
+      <div class="meta"><span id="pct">0% juntado</span><span id="updated"></span></div>
+      <ul class="uses">
+        <li><span>Licencia de desarrollador de Apple</span><span>99 USD / año</span></li>
+        <li><span>Publicar en la App Store con widgets</span><span>al llegar a la meta</span></li>
+        <li><span>Versión web</span><span>siempre gratis</span></li>
+      </ul>
+      <div class="pay" id="pay"></div>
+      <p class="thanks">Gracias por leer hasta aquí. 💙</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Hecha en México. <a href="../">Abrir Finanzas</a> · Código en <a href="https://github.com/Athonix/finanzas">GitHub</a></div>
+</footer>
+
+<script>
+/* ===== Edita aquí: avance de la meta y enlaces para cooperar =====
+   Deja un enlace vacío ('') y su botón no aparece. */
+const CONFIG = {
+  meta: 2000,          // pesos
+  juntado: 0,          // pesos juntados hasta ahora
+  actualizado: '',     // por ejemplo '21 nov 2026'
+  enlaces: [
+    { texto: 'Cooperar con Ko‑fi', url: '' },
+    { texto: 'Cooperar con Mercado Pago', url: '' },
+    { texto: 'Cooperar con PayPal', url: '' }
+  ]
+};
+
+(() => {
+  const mx = n => '$' + Math.round(n).toLocaleString('es-MX');
+  const pct = Math.max(0, Math.min(100, CONFIG.juntado / CONFIG.meta * 100));
+  document.getElementById('raised').textContent = mx(CONFIG.juntado);
+  document.getElementById('goalTxt').textContent = 'de ' + mx(CONFIG.meta) + ' MXN';
+  document.getElementById('pct').textContent = Math.floor(pct) + '% juntado';
+  if (CONFIG.actualizado) document.getElementById('updated').textContent = 'Actualizado ' + CONFIG.actualizado;
+  requestAnimationFrame(() => setTimeout(() => { document.getElementById('bar').style.width = pct + '%'; }, 200));
+
+  const pay = document.getElementById('pay');
+  const links = CONFIG.enlaces.filter(l => l.url);
+  if (!links.length) {
+    pay.innerHTML = '<div class="soon">Los enlaces para cooperar estarán aquí muy pronto.</div>';
+  } else {
+    links.forEach((l, i) => {
+      const a = document.createElement('a');
+      a.className = 'btn ' + (i === 0 ? 'blue' : 'ghost');
+      a.href = l.url; a.target = '_blank'; a.rel = 'noopener';
+      a.textContent = l.texto;
+      pay.appendChild(a);
+    });
+  }
+})();
+</script>
+</body>
+</html>

@@ -756,7 +756,10 @@ function normalizeState(d) {
   d.widgets = Array.isArray(d.widgets) ? d.widgets.filter(w => WIDGET_IDS.includes(w)) : [...DEFAULT_WIDGETS];
   return d;
 }
+// ?demo=1 → vista de muestra para la página de presentación: datos de ejemplo que nunca se guardan.
+const DEMO = new URLSearchParams(location.search).has('demo');
 function load() {
+  if (DEMO) return demoData();
   try { const n = NATIVE && normalizeState(NATIVE.state); if (n) return n; } catch (e) {}
   try {
     const raw = localStorage.getItem(STORE);
@@ -769,6 +772,7 @@ function load() {
   return d;
 }
 function saveData(d) {
+  if (DEMO) return;
   const json = JSON.stringify(d);
   try { localStorage.setItem(STORE, json); } catch (e) {}
   nativeMsg('finanzas', json);
@@ -1762,7 +1766,7 @@ function renderWidgets() {
   $('#wAddBtn').hidden = !ui.wEdit;
   $('#wHint').textContent = ui.wEdit ? 'Arrastra para mover · − para quitar' : 'Mantén presionado para editar';
   let dismissed = false; try { dismissed = localStorage.getItem('finanzas_install_x') === '1'; } catch (e) {}
-  $('#installCard').innerHTML = (!isStandalone() && !dismissed) ? `<div class="card install">
+  $('#installCard').innerHTML = (!isStandalone() && !dismissed && !DEMO) ? `<div class="card install">
       <span class="ie">📲</span>
       <div style="flex:1"><b>Instálala en tu iPhone</b><p>En Safari toca <b style="display:inline;font-size:13px">Compartir</b> → <b style="display:inline;font-size:13px">Agregar a pantalla de inicio</b>. Se abrirá a pantalla completa y funciona sin conexión.</p></div>
       <button class="ix" data-install-x aria-label="Ocultar">${icon('x', 12, 3)}</button></div>` : '';

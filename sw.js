@@ -1,6 +1,6 @@
 // Service worker: permite abrir la app sin conexión.
 // Sube el número de versión cada vez que publiques cambios.
-const CACHE = 'finanzas-v5';
+const CACHE = 'finanzas-v6';
 const ASSETS = [
   './',
   './index.html',
@@ -27,6 +27,11 @@ self.addEventListener('fetch', e => {
   if (req.method !== 'GET' || new URL(req.url).origin !== location.origin) return;
 
   // Páginas: primero red (para recibir actualizaciones), si falla usa la copia guardada.
+  // Solo la app (no la página de presentación ni la vista demo) se guarda para usarse sin conexión.
+  const url = new URL(req.url);
+  const root = new URL('./', self.registration.scope).pathname;
+  const isApp = url.pathname === root || url.pathname === root + 'index.html';
+  if (req.mode === 'navigate' && (!isApp || url.searchParams.has('demo'))) return;
   if (req.mode === 'navigate') {
     e.respondWith(
       fetch(req)
