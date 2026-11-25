@@ -6,6 +6,7 @@
 <meta name="theme-color" content="#000000">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#151516" media="(display-mode: standalone)">
 <meta name="apple-mobile-web-app-title" content="Finanzas">
 <meta name="mobile-web-app-capable" content="yes">
 <link rel="manifest" href="manifest.webmanifest">
@@ -56,6 +57,12 @@ input{font:inherit;color:inherit}
   .device{position:fixed;top:0;right:0;bottom:0;left:0;width:auto;height:auto;border-radius:0;box-shadow:none}
   .island,.statusbar,.home-ind{display:none}
   :root{--sb:env(safe-area-inset-top,0px);--tab-pad:max(env(safe-area-inset-bottom,0px),10px);--tabbar-h:calc(62px + var(--tab-pad))}
+}
+/* App instalada (iOS 26): a veces la capa fija empieza debajo de la barra de estado y termina arriba
+   del indicador de inicio. El fondo de html/body pinta esas franjas del mismo gris que las barras
+   (vidrio rgba(28,28,30,.75) sobre negro = #151516) para que no se vea cortada. */
+@media (display-mode:standalone){
+  html,body{background:#151516}
 }
 
 /* ---------- App shell ---------- */
