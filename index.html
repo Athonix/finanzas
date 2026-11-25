@@ -63,6 +63,10 @@ input{font:inherit;color:inherit}
    (vidrio rgba(28,28,30,.75) sobre negro = #151516) para que no se vea cortada. */
 @media (display-mode:standalone){
   html,body{background:#151516}
+  /* Causa real (WebKit 301108, iOS 26): si el documento mide menos que la pantalla, iOS le da a la
+     app instalada un viewport recortado (como si estuviera la barra del navegador). Un documento al
+     menos tan alto como la pantalla recibe el viewport completo; min() evita que haga scroll. */
+  html{min-height:min(100lvh,calc(100% + env(safe-area-inset-top,0px)))}
 }
 
 /* ---------- App shell ---------- */
